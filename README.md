@@ -1,2 +1,8 @@
 # Projeto-Final
-Pygame
+ ----- Pygame - Pokecrias -----
+ Integrantes:
+        João Bresser
+        Thiago Naves
+        
+Vídeo:
+
