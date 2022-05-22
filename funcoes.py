@@ -1,4 +1,3 @@
-
 import time
 import sys
 #dar print de maneira devagar 
