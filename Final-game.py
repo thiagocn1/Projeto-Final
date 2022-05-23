@@ -18,7 +18,7 @@ MENU=0
 LUTA=1
 ENCERRAR=2
 
-Status=MENU
+Status=LUTA
 
 while Status != ENCERRAR:
     if Status==MENU:
