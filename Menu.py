@@ -1,6 +1,8 @@
 #importando coisas
 import pygame
 from os import path
+from Candidatos import Candidatos
+from Jogo_final import LUTA
 from configurações import IMG_DIR
 import time
 
@@ -11,7 +13,7 @@ def menu_screen(screen,WIDTH, HEIGHT):
 
     #carregar o fundo da tela de menu
     fundo1=pygame.image.load(path.join(IMG_DIR, 'Warning.png')).convert()
-    fundo2 = pygame.image.load(path.join(IMG_DIR, 'Imagemfundo.png')).convert()
+    fundo2 = pygame.image.load(path.join(IMG_DIR, 'Imagemdefundo.png')).convert()
     fundo1_small = pygame.transform.scale(fundo1, (WIDTH, HEIGHT))
     fundo2_small = pygame.transform.scale(fundo2, (WIDTH, HEIGHT))
     tela_fundo1_rect = fundo1.get_rect()
@@ -33,6 +35,22 @@ def menu_screen(screen,WIDTH, HEIGHT):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 continuar = False
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_c:
+                    return'Ciro'
+                    Status = LUTA
+                if event.key == pygame.K_l:
+                    return 'Lula'
+                if event.key == pygame.K_m:
+                    return 'Moro'
+                if event.key == pygame.K_b:
+                    return 'Bolsonaro'
+                if event.key == pygame.K_d:
+                    return 'Doria'
+        
+
+                    
+
             
         
         screen.fill((0,0,0))
@@ -42,7 +60,7 @@ def menu_screen(screen,WIDTH, HEIGHT):
         
             
 
-    return lista
+    
 #players
 
 
