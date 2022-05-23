@@ -2,8 +2,9 @@
 import pygame
 from os import path
 from configurações import IMG_DIR 
+import time
 
-def luta_screen(window):
+def luta_screen(window,personagem):
     #unidade de tempo
     clock=pygame.time.Clock()
     HEIGHT=400
@@ -23,6 +24,21 @@ def luta_screen(window):
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
                 rodando=False
+            if event.type==pygame.KEYDOWN:
+                if event.key==pygame.K_1:
+                    i=1
+                    print(i)
+                if event.key==pygame.K_2:
+                    i=2
+                    print(i)
+                if event.key==pygame.K_3:
+                    i=3
+                    print(i)
+                if event.key==pygame.K_4:
+                    i=4
+                    print(i)
+
+
             if event.type==pygame.KEYUP:
                 rodando=False
             
