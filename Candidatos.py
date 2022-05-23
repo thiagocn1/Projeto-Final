@@ -18,7 +18,7 @@ Candidatos={'Lula':{
 'hp':100,
 'movimentos':[['agora vai',50],['capitão do mato',20],
 ['c',30],['',40]]},
-'Mouro':{
+'Moro':{
 'ataque':100,
 'hp':100,
 'movimentos':[['delação premiada',50],['lava jato',20],
