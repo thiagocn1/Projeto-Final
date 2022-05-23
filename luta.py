@@ -24,6 +24,21 @@ def luta_screen(window,personagem):
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
                 rodando=False
+            if event.type==pygame.KEYDOWN:
+                if event.key==pygame.K_1:
+                    i=1
+                    print(i)
+                if event.key==pygame.K_2:
+                    i=2
+                    print(i)
+                if event.key==pygame.K_3:
+                    i=3
+                    print(i)
+                if event.key==pygame.K_4:
+                    i=4
+                    print(i)
+
+
             if event.type==pygame.KEYUP:
                 rodando=False
             

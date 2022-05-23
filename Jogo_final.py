@@ -24,7 +24,7 @@ while Status != ENCERRAR:
     if Status==MENU:
         
         Status=menu_screen(window)
-    elif Status==LUTA:
+    elif Status!=MENU and Status!=ENCERRAR:
         Status= luta_screen(window,'Lula')
     else:
         Status= ENCERRAR
