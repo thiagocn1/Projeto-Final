@@ -42,7 +42,7 @@ def menu_screen(screen,WIDTH, HEIGHT):
         
             
 
-
+    return lista
 #players
 
 
