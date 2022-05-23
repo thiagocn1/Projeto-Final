@@ -2,8 +2,9 @@
 import pygame
 from os import path
 from configurações import IMG_DIR 
+import time
 
-def luta_screen(window):
+def luta_screen(window,personagem):
     #unidade de tempo
     clock=pygame.time.Clock()
     HEIGHT=400
