@@ -3,12 +3,24 @@ import pygame
 from os import path
 from configurações import IMG_DIR 
 import time
+from Candidatos import Candidatos
+import Classes
 
 def luta_screen(window,personagem):
     #unidade de tempo
     clock=pygame.time.Clock()
     HEIGHT=400
     WIDTH=600
+    all_sprites=pygame.sprite.Group()
+    all_player=pygame.sprite.Group()
+    all_contra=pygame.sprite.Group()
+    groups={}
+    groups['all_sprites']=all_sprites
+    groups['all_players']=all_player
+    groups['all_contra']=all_contra
+    
+    #criar jogador
+
 
     #carregar o fundo da tela de luta
     tela_fundo=pygame.image.load(path.join(IMG_DIR, 'palacio.png')).convert()
@@ -19,6 +31,7 @@ def luta_screen(window,personagem):
     #----Loop principal-----
     rodando=True
     while rodando:
+        player= Classes.Player(personagem,Candidatos[personagem])
         
         #------eventos-------
         for event in pygame.event.get():

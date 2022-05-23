@@ -2,26 +2,31 @@ Candidatos={'Lula':{
 'ataque':100,
 'hp':100,
 'movimentos':[['jogar dedo',50],['sair da prisão',20],
-['corrupção',30],['recorer',40]]},
+['corrupção',30],['recorer',40]],
+'imagem':'Luis.webp'},
 'Bolsonaro':{
 'ataque':100,
 'hp':100,
 'movimentos':[['jacaré',50],['destruir quartel',20],
-['corrupção',30],['fritar hamburguer',40]]},
+['corrupção',30],['fritar hamburguer',40]],
+'imagem':'jair.webp'},
 'Doria':{
 'ataque':100,
 'hp':100,
 'movimentos':[['calça justa',50],['bombeiro',20],
-['já foi para dubai?',30],['vacina já',40]]},
+['já foi para dubai?',30],['vacina já',40]],
+'imagem':'doria.webp'},
 'Ciro':{
 'ataque':100,
 'hp':100,
 'movimentos':[['agora vai',50],['capitão do mato',20],
-['c',30],['',40]]},
+['c',30],['',40]],
+'imagem':'ciro.webp'},
 'Moro':{
 'ataque':100,
 'hp':100,
 'movimentos':[['delação premiada',50],['lava jato',20],
-['incompetencia',30],['',40]]},
+['incompetencia',30],['',40]],
+'imagem':'Moro.webp'},
 }
-print(Candidatos['Lula']['movimentos'])
+

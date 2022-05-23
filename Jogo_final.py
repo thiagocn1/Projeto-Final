@@ -24,8 +24,8 @@ while Status != ENCERRAR:
     if Status==MENU:
         
         Status=menu_screen(window)
-    elif Status!=MENU and Status!=ENCERRAR:
-        Status= luta_screen(window,'Lula')
+    elif Status==LUTA:
+        Status= luta_screen(window,'lula')
     else:
         Status= ENCERRAR
 #sair do jogo
