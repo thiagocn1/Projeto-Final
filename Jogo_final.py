@@ -3,7 +3,7 @@ import pygame
 import random
 from Menu import menu_screen
 from luta import luta_screen
-
+import Menu
 
 pygame.init()
 
@@ -18,14 +18,14 @@ MENU=0
 LUTA=1
 ENCERRAR=2
 
-Status=LUTA
+Status=MENU
 
 while Status != ENCERRAR:
     if Status==MENU:
         
-        Status=menu_screen(window)
+        Status=menu_screen(window,WIDTH,HEIGHT)
     elif Status==LUTA:
-        Status= luta_screen(window,'lula')
+        Status= luta_screen(window,Menu.player)
     else:
         Status= ENCERRAR
 #sair do jogo

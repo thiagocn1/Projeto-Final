@@ -2,10 +2,10 @@
 import pygame
 from os import path
 from Candidatos import Candidatos
-from Jogo_final import LUTA
 from configurações import IMG_DIR
 import time
 
+player = ''
 def menu_screen(screen,WIDTH, HEIGHT):
     #unidade de tempo
     clock=pygame.time.Clock()
@@ -25,6 +25,8 @@ def menu_screen(screen,WIDTH, HEIGHT):
     pygame.display.update()
     time.sleep(5)
 
+    
+
 
 
 
@@ -32,31 +34,32 @@ def menu_screen(screen,WIDTH, HEIGHT):
     continuar = True
     while continuar:
         clock.tick(60)
+        screen.fill((0,0,0))
+        screen.blit(fundo2_small,(0,0))
+
+        pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 continuar = False
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_c:
-                    return'Ciro'
-                    Status = LUTA
+                    player = 'Ciro'
                 if event.key == pygame.K_l:
-                    return 'Lula'
+                    player = 'Lula'
                 if event.key == pygame.K_m:
-                    return 'Moro'
+                    player = 'Moro'
                 if event.key == pygame.K_b:
-                    return 'Bolsonaro'
+                    player = 'Bolsonaro'
                 if event.key == pygame.K_d:
-                    return 'Doria'
+                    player = 'Doria'
+        
+    return player
         
 
                     
 
             
         
-        screen.fill((0,0,0))
-        screen.blit(fundo2_small,(0,0))
-
-        pygame.display.update()
         
             
 
