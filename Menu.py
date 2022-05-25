@@ -2,10 +2,8 @@
 import pygame
 from os import path
 from Candidatos import Candidatos
-from configurações import IMG_DIR
+from configuracoes import *
 import time
-ENCERRAR=2
-
 player = ''
 def menu_screen(screen,WIDTH, HEIGHT):
     #unidade de tempo
@@ -24,7 +22,7 @@ def menu_screen(screen,WIDTH, HEIGHT):
     screen.fill((0,0,0))
     screen.blit(fundo1_small,(0,0))
     pygame.display.update()
-    time.sleep(5)
+    time.sleep(1)
 
     
 
@@ -60,7 +58,7 @@ def menu_screen(screen,WIDTH, HEIGHT):
                     player = 'Doria'
                     continuar = False
         
-    return player
+    return LUTA, player
         
 
                     
