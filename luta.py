@@ -22,7 +22,6 @@ def luta_screen(window,personagem):
     
     #criar jogador
     player=Player(personagem)
-    all_sprites.add(player)
 
     #carregar o fundo da tela de luta
     tela_fundo=pygame.image.load(path.join(IMG_DIR, 'palacio.png')).convert()
@@ -62,7 +61,7 @@ def luta_screen(window,personagem):
         BLACK=(0,0,0)
         window.fill(BLACK)
         window.blit((tela_fundo),(0,0))
-        all_sprites.draw(window)
+        window.blit((player.image,player.rect))
         
 
     

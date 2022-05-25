@@ -7,3 +7,4 @@ def devagar_print(p):
         sys.stdout.flush()
         time.sleep(0.05)
 
+print(devagar_print('bom dia meu amigo'))
