@@ -4,6 +4,7 @@ from os import path
 from Candidatos import Candidatos
 from configurações import IMG_DIR
 import time
+ENCERRAR=2
 
 player = ''
 def menu_screen(screen,WIDTH, HEIGHT):
@@ -40,18 +41,24 @@ def menu_screen(screen,WIDTH, HEIGHT):
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                player=ENCERRAR
                 continuar = False
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_c:
                     player = 'Ciro'
+                    continuar = False
                 if event.key == pygame.K_l:
                     player = 'Lula'
+                    continuar = False
                 if event.key == pygame.K_m:
                     player = 'Moro'
+                    continuar = False
                 if event.key == pygame.K_b:
                     player = 'Bolsonaro'
+                    continuar = False
                 if event.key == pygame.K_d:
                     player = 'Doria'
+                    continuar = False
         
     return player
         
