@@ -2,22 +2,22 @@ import pygame
 from Candidatos import Candidatos
 from configuracoes import *
 from os import path
+import random
 
 
 class Player(pygame.sprite.Sprite):
     def __init__(self,nome):
         pygame.sprite.Sprite.__init__(self)
-        
         nois=Candidatos[nome]['imagem']
         self.image=pygame.image.load(path.join(IMG_DIR,nois)).convert_alpha()
-        self.image_small=pygame.transform.scale(self.image,(200,200))
+        self.image_small=pygame.transform.scale(self.image,(125,125))
         self.rect=self.image_small.get_rect()
         self.nome=nome
         self.movimentos=Candidatos['{}'.format(nome)]['movimentos']
         self.ataque=Candidatos['{}'.format(nome)]['ataque'] 
         self.hp=Candidatos['{}'.format(nome)] ['hp']  #quanto de vida ele tem
-        self.rect.centerx=WIDTH/4
-        self.rect.centery=HEIGHT/2
+        self.rect.centerx= 100
+        self.rect.centery= 125
 
     #luta entre dois casas
     def ataque(self):
@@ -32,15 +32,17 @@ class Player(pygame.sprite.Sprite):
 
 
 class Contra(pygame.sprite.Sprite):
-    def __init__(self,nome):
+    def __init__(self,lista):
         pygame.sprite.Sprite.__init__(self)
-
-        self.image=Candidatos[nome]['imagem']
-        self.rect=self.image.get_rect()
+        i=random.randint(0,5)
+        nome=lista[i]
+        nois=Candidatos[nome]['imagem']
+        self.image=pygame.image.load(path.join(IMG_DIR,nois)).convert_alpha()
+        self.image_small=pygame.transform.scale(self.image,(125,125))
+        self.rect=self.image_small.get_rect()
         self.nome=nome
-        self.movimentos=Candidatos['{}'.format(nome)]['movimento']
+        self.movimentos=Candidatos['{}'.format(nome)]['movimentos']
         self.ataque=Candidatos['{}'.format(nome)]['ataque'] 
         self.hp=Candidatos['{}'.format(nome)] ['hp']  #quanto de vida ele tem
-        self.rect.centerx=WIDTH*3/4
-        self.rect.centery=HEIGHT/2 
-
+        self.rect.centerx= 500
+        self.rect.centery= 125

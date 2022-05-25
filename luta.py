@@ -3,7 +3,7 @@ import pygame
 from os import path
 from configuracoes import * 
 from Candidatos import Candidatos
-from Classes import Player
+from Classes import Contra, Player
 
 def luta_screen(window,personagem):
     #unidade de tempo
@@ -19,11 +19,14 @@ def luta_screen(window,personagem):
     
     #criar jogador
     player=Player(personagem)
+    lista=['Lula','Ciro','Moro','Bolsonaro','Doria']
+    contra=Contra(lista)
 
     #carregar o fundo da tela de luta
     tela_fundo=pygame.image.load(path.join(IMG_DIR, 'palacio.png')).convert()
-    tela_fundo_small=pygame.image.scale(tela_fundo,(WIDTH,HEIGHT))
+    tela_fundo_small=pygame.transform.scale(tela_fundo,(WIDTH,HEIGHT))
     tela_fundo_rect = tela_fundo_small.get_rect()
+
 
 
     #----Loop principal-----
@@ -57,7 +60,8 @@ def luta_screen(window,personagem):
         BLACK=(0,0,0)
         window.fill(BLACK)
         window.blit((tela_fundo_small),(0,0))
-        window.blit(player.image,player.rect)
+        window.blit(player.image_small,player.rect)
+        window.blit(contra.image_small,contra.rect)
         
 
     
