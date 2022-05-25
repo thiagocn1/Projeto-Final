@@ -62,6 +62,9 @@ def luta_screen(window,personagem):
         BLACK=(0,0,0)
         window.fill(BLACK)
         window.blit((tela_fundo),(0,0))
+        all_sprites.draw(window)
+        
+
     
 
 

@@ -24,7 +24,6 @@ while Status != ENCERRAR:
     if Status==MENU:
         
         Status=menu_screen(window,WIDTH,HEIGHT)
-        print(Status)
     elif Status!=MENU and Status!=ENCERRAR:
         Status= luta_screen(window,Status)
     else:

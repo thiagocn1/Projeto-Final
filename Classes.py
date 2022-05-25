@@ -9,13 +9,13 @@ class Player(pygame.sprite.sprite):
         pygame.sprite.Sprite.__init__(self)
         
         self.image=Candidatos[nome]['imagem']
+        self.rect=self.image.get_rect()
         self.nome=nome
         self.movimentos=Candidatos['{}'.format(nome)]['movimento']
         self.ataque=Candidatos['{}'.format(nome)]['ataque'] 
         self.hp=Candidatos['{}'.format(nome)] ['hp']  #quanto de vida ele tem
         self.rect.centerx=WIDTH/4
         self.rect.centery=HEIGHT/2
-        print(self.movimentos)
 
     #luta entre dois casas
     def lutas(self, candidato2):
