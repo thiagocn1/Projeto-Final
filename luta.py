@@ -191,7 +191,8 @@ def luta_screen(window,personagem):
             window.blit(text_ataque,ataque_rect_pos)
             pygame.display.update()#atualiza frame com a escritura
             time.sleep(1)
-            window.blit(text_ataque_contra,ataque_rect_pos)
+            ataque_contra_rect=(30,(HEIGHT-40))
+            window.blit(text_ataque_contra,ataque_contra_rect)
             pygame.display.update()
             time.sleep(1)
         if player.hp<=0 or contra.hp<=0:
