@@ -4,10 +4,12 @@ from os import path
 from configuracoes import * 
 from Candidatos import Candidatos
 from Classes import Contra, Player
+import time
 
 def luta_screen(window,personagem):
     #unidade de tempo
     clock=pygame.time.Clock()
+    clock.tick(60)
     
     all_sprites=pygame.sprite.Group()
     all_player=pygame.sprite.Group()
@@ -38,8 +40,8 @@ def luta_screen(window,personagem):
 
     #----Loop principal-----
     rodando=True
-    ataque_script = None
     while rodando:
+        ataque_script = None
 
         
         #------eventos-------
@@ -50,37 +52,51 @@ def luta_screen(window,personagem):
                 if event.key==pygame.K_1:
                     dano=player.atacar(1)
                     #colocar mensagem quando atacar
+                    i=0
+                    ataque_script=Candidatos['{}'.format(personagem)]['movimentos'][i][2]
+                    text_ataque=nome_font.render("{}".format(ataque_script),True,(0,0,0))
+                    #tirar vida adiversário
                     contra.hp-=dano
 
 
                     dano_contra=contra.ataque_contra()
                     player.hp-=dano_contra
-                    print(player.hp)
                     #colocar mensagem que o adversário atacou
-                if event.key==pygame.K_2:
+
+                elif event.key==pygame.K_2:
                     dano=player.atacar(2)
                     #colocar mensagem quando atacar
-                    print(Candidatos['{}'.format(personagem)]['movimentos'][i])
+                    i=1
                     ataque_script=Candidatos['{}'.format(personagem)]['movimentos'][i][2]
-                    text_surface=nome_font.render("{}".format(ataque),True,(0,0,0))
-                    text_rect=text_surface.get_rect()
+                    text_ataque=nome_font.render("{}".format(ataque_script),True,(0,0,0))
                     #tirar vida adiversário
                     contra.hp-=dano
 
                     dano_contra=contra.ataque_contra()
                     player.hp-=dano_contra
                     #colocar mensagem que o adversário atacou
-                if event.key==pygame.K_3:
+
+                elif event.key==pygame.K_3:
                     dano=player.atacar(3)
                     #colocar mensagem quando atacar
+                    i=2
+                    ataque_script=Candidatos['{}'.format(personagem)]['movimentos'][i][2]
+                    text_ataque=nome_font.render("{}".format(ataque_script),True,(0,0,0))
+
+                    #tirar vida adiversário
                     contra.hp-=dano
 
                     dano_contra=contra.ataque_contra()
                     player.hp-=dano_contra
                     #colocar mensagem que o adversário atacou
-                if event.key==pygame.K_4:
+
+                elif event.key==pygame.K_4:
                     dano=player.atacar(4)
                     #colocar mensagem quando atacar
+                    i=3
+                    ataque_script=Candidatos['{}'.format(personagem)]['movimentos'][i][2]
+                    text_ataque=nome_font.render("{}".format(ataque_script),True,(0,0,0))
+                    #tirar vida adiversário
                     contra.hp-=dano
 
                     dano_contra=contra.ataque_contra()
@@ -88,19 +104,19 @@ def luta_screen(window,personagem):
                     
                     #colocar mensagem que o adversário atacou
 
-            
 
 
 
 
-        	#-------gerando saidas-----
+        #-------gerando saidas-----
         BLACK=(0,0,0)
         window.fill(BLACK)
        #dando print nos personagens e fundo 
         window.blit((tela_fundo_small),(0,0))
         window.blit(player.image_small,player.rect)
         window.blit(contra.image_small,contra.rect)
-        pygame.draw.polygon(window, BLACK, [(0, 0), (100, 0), (100, 20), (20, 0)])
+        pygame.draw.polygon(window, BLACK, [(0, 0), (100, 0), (100, 20), (0, 20)])
+        pygame.draw.polygon(window, (0,128,0), [(0, 0), (player.hp, 0), (player.hp, 20), (0, 20)])
          
         #dando print nos nomes de ataque
         if ataque_script == None:
@@ -127,5 +143,10 @@ def luta_screen(window,personagem):
 
 
         pygame.display.update()#atualizar frames
+        if ataque_script!=None:
+            ataque_rect_pos=(30,(HEIGHT-70))
+            window.blit(text_ataque,ataque_rect_pos)
+            pygame.display.update()#atualiza frame com a escritura
+            time.sleep(1)
 
 
