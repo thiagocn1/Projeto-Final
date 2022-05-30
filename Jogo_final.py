@@ -4,7 +4,7 @@ import random
 from Menu import menu_screen
 from luta import luta_screen
 from configuracoes import *
-
+import time
 pygame.init()
 
 #-------Gera tela de jogo
