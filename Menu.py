@@ -18,7 +18,7 @@ def menu_screen(screen,WIDTH, HEIGHT):
     tela_fundo1_rect = fundo1.get_rect()
     tela_fundo2_rect = fundo2.get_rect()
 
-
+    #primeira tela de aviso
     screen.fill((0,0,0))
     screen.blit(fundo1_small,(0,0))
     pygame.display.update()
@@ -29,7 +29,7 @@ def menu_screen(screen,WIDTH, HEIGHT):
 
 
 
-
+    #segunda tela de escolha personagens
     continuar = True
     while continuar:
         clock.tick(60)
@@ -37,6 +37,7 @@ def menu_screen(screen,WIDTH, HEIGHT):
         screen.blit(fundo2_small,(0,0))
 
         pygame.display.update()
+    	#esse evento delimitará qual personagem que vai ser esocolhido
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 player=ENCERRAR
@@ -57,7 +58,7 @@ def menu_screen(screen,WIDTH, HEIGHT):
                 if event.key == pygame.K_d:
                     player = 'Doria'
                     continuar = False
-        
+    #retorna o luta para mudar de tela e o nome do personagem    
     return LUTA, player
         
 

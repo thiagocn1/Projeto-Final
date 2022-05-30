@@ -1,3 +1,4 @@
+#dicionário com especificações para cada candidato
 Candidatos={'Lula':{
 'ataque':100,
 'hp':100,

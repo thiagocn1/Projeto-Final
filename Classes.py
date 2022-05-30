@@ -4,7 +4,7 @@ from configuracoes import *
 from os import path
 import random
 
-
+#Classe do personagem controlado 
 class Player(pygame.sprite.Sprite):
     def __init__(self,nome):
         pygame.sprite.Sprite.__init__(self)
@@ -31,7 +31,7 @@ class Player(pygame.sprite.Sprite):
 
 
 
-
+#Classe do personagem que vai lutar contra
 class Contra(pygame.sprite.Sprite):
     def __init__(self,lista):
         pygame.sprite.Sprite.__init__(self)

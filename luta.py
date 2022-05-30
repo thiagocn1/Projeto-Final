@@ -11,14 +11,6 @@ def luta_screen(window,personagem):
     clock=pygame.time.Clock()
     clock.tick(60)
     
-    all_sprites=pygame.sprite.Group()
-    all_player=pygame.sprite.Group()
-    all_contra=pygame.sprite.Group()
-    groups={}
-    groups['all_sprites']=all_sprites
-    groups['all_players']=all_player
-    groups['all_contra']=all_contra
-    
     #criar jogador
     player=Player(personagem)
     lista=['Lula','Ciro','Moro','Bolsonaro','Doria']
@@ -28,7 +20,6 @@ def luta_screen(window,personagem):
     #carregar o fundo da tela de luta e caixa de ataque
     tela_fundo=pygame.image.load(path.join(IMG_DIR, 'palacio.png')).convert()
     tela_fundo_small=pygame.transform.scale(tela_fundo,(WIDTH,HEIGHT))
-    tela_fundo_rect = tela_fundo_small.get_rect()
     caixa_ataques=pygame.image.load(path.join(IMG_DIR, 'caixa_luta.png')).convert_alpha()
     caixa_ataques_small=pygame.transform.scale(caixa_ataques,(WIDTH,HEIGHT/4))  
 
@@ -149,14 +140,14 @@ def luta_screen(window,personagem):
         #-------gerando saidas-----
         BLACK=(0,0,0)
         window.fill(BLACK)
-       #dando print nos personagens e fundo 
+       #dando print nos personagens e tela de fundo 
         window.blit((tela_fundo_small),(0,0))
         window.blit(player.image_small,player.rect)
         window.blit(contra.image_small,contra.rect)
-        #vida do player
+        #vida do player ( barra de vida em cima  )
         pygame.draw.polygon(window, BLACK, [(30, 10), (130, 10), (130, 30), (30, 30)])
         pygame.draw.polygon(window, (0,128,0), [(30, 10), ((player.hp+30), 10), ((player.hp+30), 30), (30, 30)])
-        #vida do contra
+        #vida do contra (barra de vida em cima )
         pygame.draw.polygon(window, BLACK, [(470, 10), (570, 10), (570, 30), (470, 30)])
         pygame.draw.polygon(window, (0,128,0), [(470, 10), ((contra.hp+470), 10), ((contra.hp+470), 30), (470, 30)])
 
@@ -186,6 +177,7 @@ def luta_screen(window,personagem):
 
 
         pygame.display.update()#atualizar frames
+        #dar print nas escrituras pós ataques
         if ataque_script!=None:
             ataque_rect_pos=(30,(HEIGHT-70))
             window.blit(text_ataque,ataque_rect_pos)
