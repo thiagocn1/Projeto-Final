@@ -50,4 +50,4 @@ class Contra(pygame.sprite.Sprite):
     def ataque_contra(self):
         i=random.randint(0,3)
         dano_ataque=Candidatos[self.nome]['movimentos'][i][1]
-        return dano_ataque
+        return dano_ataque,i

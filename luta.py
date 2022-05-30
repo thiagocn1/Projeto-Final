@@ -52,57 +52,95 @@ def luta_screen(window,personagem):
                 if event.key==pygame.K_1:
                     dano=player.atacar(1)
                     #colocar mensagem quando atacar
-                    i=0
-                    ataque_script=Candidatos['{}'.format(personagem)]['movimentos'][i][2]
+                    l=0
+                    ataque_script=Candidatos['{}'.format(personagem)]['movimentos'][l][2]
                     text_ataque=nome_font.render("{}".format(ataque_script),True,(0,0,0))
                     #tirar vida adiversário
                     contra.hp-=dano
 
-
-                    dano_contra=contra.ataque_contra()
-                    player.hp-=dano_contra
-                    #colocar mensagem que o adversário atacou
+                    #ataque adversário 
+                    dano_contra,i=contra.ataque_contra()
+                    #mensagem que adversário devolve
+                    ataque_contra_script=Candidatos['{}'.format(personagem)]['movimentos'][i][3]
+                    text_ataque_contra=nome_font.render("{}".format(ataque_contra_script),True,(0,0,0))
+                    #variaveis dependendo do ataque que adversário usa
+                    if i==0 or i==1:
+                        player.hp-=dano_contra
+                    elif i==2:
+                        contra.hp+=dano_contra
+                    else:
+                        player.hp-=dano_contra
+                        contra.hp-=dano_contra/4
 
                 elif event.key==pygame.K_2:
                     dano=player.atacar(2)
                     #colocar mensagem quando atacar
-                    i=1
-                    ataque_script=Candidatos['{}'.format(personagem)]['movimentos'][i][2]
+                    l=1
+                    ataque_script=Candidatos['{}'.format(personagem)]['movimentos'][l][2]
                     text_ataque=nome_font.render("{}".format(ataque_script),True,(0,0,0))
                     #tirar vida adiversário
                     contra.hp-=dano
 
-                    dano_contra=contra.ataque_contra()
-                    player.hp-=dano_contra
-                    #colocar mensagem que o adversário atacou
+                    #ataque adversário 
+                    dano_contra,i=contra.ataque_contra()
+                    #mensagem que adversário devolve
+                    ataque_contra_script=Candidatos['{}'.format(personagem)]['movimentos'][i][3]
+                    text_ataque_contra=nome_font.render("{}".format(ataque_contra_script),True,(0,0,0))
+                    #variaveis dependendo do ataque que adversário usa
+                    if i==0 or i==1:
+                        player.hp-=dano_contra
+                    elif i==2:
+                        contra.hp+=dano_contra
+                    else:
+                        player.hp-=dano_contra
+                        contra.hp-=dano_contra/4
 
                 elif event.key==pygame.K_3:
-                    dano=player.atacar(3)
+                    vida=player.atacar(3)
                     #colocar mensagem quando atacar
-                    i=2
-                    ataque_script=Candidatos['{}'.format(personagem)]['movimentos'][i][2]
+                    l=2
+                    ataque_script=Candidatos['{}'.format(personagem)]['movimentos'][l][2]
                     text_ataque=nome_font.render("{}".format(ataque_script),True,(0,0,0))
 
                     #tirar vida adiversário
-                    contra.hp-=dano
+                    player.hp+=vida
 
-                    dano_contra=contra.ataque_contra()
-                    player.hp-=dano_contra
-                    #colocar mensagem que o adversário atacou
+                     #ataque adversário 
+                    dano_contra,i=contra.ataque_contra()
+                    #mensagem que adversário devolve
+                    ataque_contra_script=Candidatos['{}'.format(personagem)]['movimentos'][i][3]
+                    text_ataque_contra=nome_font.render("{}".format(ataque_contra_script),True,(0,0,0))
+                    #variaveis dependendo do ataque que adversário usa
+                    if i==0 or i==1:
+                        player.hp-=dano_contra
+                    elif i==2:
+                        contra.hp+=dano_contra
+                    else:
+                        player.hp-=dano_contra
+                        contra.hp-=dano_contra/4
 
                 elif event.key==pygame.K_4:
                     dano=player.atacar(4)
                     #colocar mensagem quando atacar
-                    i=3
-                    ataque_script=Candidatos['{}'.format(personagem)]['movimentos'][i][2]
+                    l=3
+                    ataque_script=Candidatos['{}'.format(personagem)]['movimentos'][l][2]
                     text_ataque=nome_font.render("{}".format(ataque_script),True,(0,0,0))
                     #tirar vida adiversário
+                    player.hp-=dano/4
                     contra.hp-=dano
-
-                    dano_contra=contra.ataque_contra()
-                    player.hp-=dano_contra
-                    
-                    #colocar mensagem que o adversário atacou
+                    #ataque adversário 
+                    dano_contra,i=contra.ataque_contra()
+                   #mensagem que adversário devolve
+                    ataque_contra_script=Candidatos['{}'.format(personagem)]['movimentos'][i][3]
+                    text_ataque_contra=nome_font.render("{}".format(ataque_contra_script),True,(0,0,0))
+                    #variaveis dependendo do ataque que adversário usa
+                    if i==0 or i==1:
+                        player.hp-=dano_contra
+                    elif i==2:
+                        contra.hp+=dano_contra
+                    else:
+                        player.hp-=dano_contra
+                        contra.hp-=dano_contra/4
 
 
 
@@ -152,6 +190,9 @@ def luta_screen(window,personagem):
             ataque_rect_pos=(30,(HEIGHT-70))
             window.blit(text_ataque,ataque_rect_pos)
             pygame.display.update()#atualiza frame com a escritura
+            time.sleep(1)
+            window.blit(text_ataque_contra,ataque_rect_pos)
+            pygame.display.update()
             time.sleep(1)
         if player.hp<=0 or contra.hp<=0:
             return ENCERRAR
