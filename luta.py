@@ -115,10 +115,15 @@ def luta_screen(window,personagem):
         window.blit((tela_fundo_small),(0,0))
         window.blit(player.image_small,player.rect)
         window.blit(contra.image_small,contra.rect)
-        pygame.draw.polygon(window, BLACK, [(0, 0), (100, 0), (100, 20), (0, 20)])
-        pygame.draw.polygon(window, (0,128,0), [(0, 0), (player.hp, 0), (player.hp, 20), (0, 20)])
+        #vida do player
+        pygame.draw.polygon(window, BLACK, [(30, 10), (130, 10), (130, 30), (30, 30)])
+        pygame.draw.polygon(window, (0,128,0), [(30, 10), ((player.hp+30), 10), ((player.hp+30), 30), (30, 30)])
+        #vida do contra
+        pygame.draw.polygon(window, BLACK, [(470, 10), (570, 10), (570, 30), (470, 30)])
+        pygame.draw.polygon(window, (0,128,0), [(470, 10), ((player.hp+470), 10), ((player.hp+470), 30), (470, 30)])
+
          
-        #dando print nos nomes de ataque
+        #dando print nos nomes de ataque e caixa ataque
         if ataque_script == None:
             window.blit(caixa_ataques_small,(0,(HEIGHT-100)))
             for i in range(0,4):
@@ -148,5 +153,6 @@ def luta_screen(window,personagem):
             window.blit(text_ataque,ataque_rect_pos)
             pygame.display.update()#atualiza frame com a escritura
             time.sleep(1)
-
+        if player.hp<=0 or contra.hp<=0:
+            return ENCERRAR
 
