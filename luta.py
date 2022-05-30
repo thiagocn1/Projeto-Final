@@ -158,7 +158,7 @@ def luta_screen(window,personagem):
         pygame.draw.polygon(window, (0,128,0), [(30, 10), ((player.hp+30), 10), ((player.hp+30), 30), (30, 30)])
         #vida do contra
         pygame.draw.polygon(window, BLACK, [(470, 10), (570, 10), (570, 30), (470, 30)])
-        pygame.draw.polygon(window, (0,128,0), [(470, 10), ((player.hp+470), 10), ((player.hp+470), 30), (470, 30)])
+        pygame.draw.polygon(window, (0,128,0), [(470, 10), ((contra.hp+470), 10), ((contra.hp+470), 30), (470, 30)])
 
          
         #dando print nos nomes de ataque e caixa ataque
