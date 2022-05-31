@@ -3,7 +3,7 @@ Candidatos={'Lula':{
 'ataque':100,
 'hp':100,
 'movimentos':[
-    ['Jogar dedo',20,"A cobra que Lula é regenera seu dedo e o arranca jogando no adversário","Lula usou ataque Jogar dedo e aplicou dano"],
+    ['Jogar dedo',20," Lula regenera seu dedo e o joga no seu adversário","Lula usou ataque Jogar dedo e aplicou dano"],
     ['Recorrer',20,"Lula recorre trazendo vergonha ao seu adversário","Lula usuou ataque Recorrer e aplicou dano"],
     ['Corrupção',30," Lula Rouba Mensalão compra triplex para repousar","Lula utilizou Corrupção e recuperou vida"],
     ['Sair da prisão',40,"Ao sair da prisão lula se arranha, ambos sofrem dano","Lula utilizou Sair da prisão sofrendo e infligindo dano" ]
@@ -29,7 +29,7 @@ Candidatos={'Lula':{
 'Ciro':{
 'ataque':100,
 'hp':100,
-'movimentos':[['Agora vai',20,"Ciro intimida adversário pela sua persistencia""Ciro utilizou Agora vai e infligiu dano"],
+'movimentos':[['Agora vai',20,"Ciro intimida adversário pela sua persistencia","Ciro utilizou Agora vai e infligiu dano"],
     ['Coronelismo',20,"Ciro domina Ceará ","Ciro utilizou Coronelismo e infligiu dano"],
     ['Xingar jornalista',30,"Ciro se sente bem","Ciro utilizou Xingar jornalista e recuperou vida"],
     ['Capitão do mato',40,"Ciro é racista","Ciro utiliza Capião do mato sofrendo e infligindo dano"]],

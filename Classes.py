@@ -21,7 +21,6 @@ class Player(pygame.sprite.Sprite):
 
     #luta entre dois casas quando escolher um ataque
     def atacar(self,i):
-        i=i-1
         dano_ataque=Candidatos[self.nome]['movimentos'][i][1]
         return dano_ataque
 
