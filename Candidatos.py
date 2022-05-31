@@ -13,10 +13,10 @@ Candidatos={'Lula':{
 'ataque':100,
 'hp':100,
 'movimentos':[
-    ['Jacaré',20,'Bolsaro tomou coronavac e virou um jacaré atacando o adversáiro ',"Bolsonaro usuou ataque jacaré e aplicou dano" ],
+    ['Jacaré',20,'Bolsaro tomou coronavac e virou um jacaré atacando o adversáiro ',"Bolsonaro usou ataque jacaré e aplicou dano" ],
     ['Porte de arma',20,"Bolsonaro liberou AK47 e pipocou","Bolsonaro utilizou ataque porte de arma e aplicou dano "],
-    ['Corrupção',30,"Rachadinhade Bolsonaro cobriu seu convenio ele ganhou 30 de vida","Bolsonáro utilizou Corrupção e recuperou vida"],
-    ['Golpe',40,"Bolsonáro tenta dar um golpe mas é burro toma dano também","Bolsonaro utilizou golpe sofrendo e infligindo dano"]],
+    ['Corrupção',30,"Rachadinha de Bolsonaro cobriu seu convenio ele ganhou 30 de vida","Bolsonáro utilizou Corrupção e recuperou vida"],
+    ['Golpe',40,"Bolsonáro tenta dar um golpe mas é burro, toma dano também","Bolsonaro utilizou golpe sofrendo e infligindo dano"]],
 'imagem':'Jair.webp'},
 'Doria':{
 'ataque':100,
