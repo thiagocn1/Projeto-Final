@@ -3,13 +3,12 @@ import pygame
 from os import path
 from configuracoes import * 
 from Candidatos import Candidatos
-from Classes import Contra, Player
+from Classes import Contra, Efeitodano, Efeitovida, Player
 import time
 
 def luta_screen(window,personagem):
     #unidade de tempo
     clock=pygame.time.Clock()
-    clock.tick(60)
     
     #criar jogador
     player=Player(personagem)
@@ -29,11 +28,20 @@ def luta_screen(window,personagem):
     #criar variavel para delimitar quando a tecla funciona
     pode_atacar='Sim'
 
+    all_sprites = pygame.sprite.Group()
+
     #----Loop principal-----
     rodando=True
+    ataque_script = None
+    estado_ataque = 0
+    tempo_ataque = 0
     while rodando:
-        ataque_script = None
+        clock.tick(60)
 
+        if estado_ataque in [1, 2]:
+            tempo_ataque += 1
+        else:
+            tempo_ataque = 0
         
         #------eventos-------
         for event in pygame.event.get():
@@ -62,6 +70,12 @@ def luta_screen(window,personagem):
                         else:
                             player.hp-=dano_contra
                             contra.hp-=dano_contra/4
+                        #adicionar animação
+                        efeito= Efeitodano(contra.rect.center)
+                        all_sprites.add(efeito)
+
+                        
+                        estado_ataque = 1
                         #faz com que não de para atacar quando não der para ver os ataques na tela
                         pode_atacar='nao'
 
@@ -87,8 +101,14 @@ def luta_screen(window,personagem):
                             player.hp-=dano_contra
                             contra.hp-=dano_contra/4
                         
+                        #adicionar animação
+                        efeito= Efeitodano(contra.rect.center)
+                        all_sprites.add(efeito)
+                        
                         #faz com que não de para atacar quando não der para ver os ataques na tela
+                        estado_ataque = 1
                         pode_atacar='nao'
+
 
                     elif event.key==pygame.K_3:
                         vida=player.atacar(2)
@@ -112,8 +132,13 @@ def luta_screen(window,personagem):
                         else:
                             player.hp-=dano_contra
                             contra.hp-=dano_contra/4
+                        
+                        #adicionar animação
+                        efeito= Efeitovida(player.rect.center)
+                        all_sprites.add(efeito)
 
                         #faz com que não de para atacar quando não der para ver os ataques na tela
+                        estado_ataque = 1
                         pode_atacar='nao'
 
                     elif event.key==pygame.K_4:
@@ -137,13 +162,21 @@ def luta_screen(window,personagem):
                         else:
                             player.hp-=dano_contra
                             contra.hp-=dano_contra/4
+                        
+                        #adicionar animação
+                        efeito= Efeitodano(player.rect.center)
+                        all_sprites.add(efeito)
+                        #adicionar animação
+                        efeito= Efeitodano(contra.rect.center)
+                        all_sprites.add(efeito)
 
                         #faz com que não de para atacar quando não der para ver os ataques na tela
+                        estado_ataque = 1
                         pode_atacar='nao'
 
 
 
-
+        all_sprites.update()
 
         #-------gerando saidas-----
         BLACK=(0,0,0)
@@ -183,21 +216,22 @@ def luta_screen(window,personagem):
                 #faz com que quando apareça os ataques pode se atacar denovo
                 pode_atacar='Sim'
         else:
-            pass
-    
-
-
-        pygame.display.update()#atualizar frames
-        #dar print nas escrituras pós ataques
-        if ataque_script!=None:
-            ataque_rect_pos=(30,(HEIGHT-70))
-            window.blit(text_ataque,ataque_rect_pos)
-            pygame.display.update()#atualiza frame com a escritura
-            time.sleep(1)
-            ataque_contra_rect=(30,(HEIGHT-40))
-            window.blit(text_ataque_contra,ataque_contra_rect)
-            pygame.display.update()
-            time.sleep(1)
-        if player.hp<=0 or contra.hp<=0:
-            return ENCERRAR
-
+            if estado_ataque == 1:
+                ataque_rect_pos=(30,(HEIGHT-70))
+                window.blit(text_ataque,ataque_rect_pos)
+                if tempo_ataque > 60:
+                    tempo_ataque = 0
+                    estado_ataque = 2
+            elif estado_ataque == 2:
+                #time.sleep(1)
+                ataque_contra_rect=(30,(HEIGHT-40))
+                window.blit(text_ataque_contra,ataque_contra_rect)
+                #time.sleep(1)
+                if tempo_ataque > 60:
+                    tempo_ataque = 0
+                    estado_ataque = 0
+                    ataque_script = None
+            if player.hp<=0 or contra.hp<=0:
+                return ENCERRAR
+        all_sprites.draw(window)
+        pygame.display.update()#atualiza frame com a escritura

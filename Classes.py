@@ -70,7 +70,7 @@ class Efeitodano(pygame.sprite.Sprite):
         self.lastupdate=pygame.time.get_ticks()
         
         #tempo para proxima imagem ser mostrada
-        self.frame_ticks
+        self.frame_ticks = 70
     def update(self):
         #verifica o tempo
         now=pygame.time.get_ticks()
@@ -80,9 +80,6 @@ class Efeitodano(pygame.sprite.Sprite):
         if elapsed_tickes>self.frame_ticks:
             self.lastupdate=now
 
-            #avanca um quadro
-            self.frame+=1
-            
             # verifica se já chegou no final da animacao
             if self.frame==len(self.animation_dano):
                 #se sim acabar com a explosão
@@ -93,6 +90,8 @@ class Efeitodano(pygame.sprite.Sprite):
                 self.image = self.animation_dano[self.frame]
                 self.rect = self.image.get_rect()
                 self.rect.center = center
+                #avanca um quadro
+                self.frame+=1
 
 #classe animação de vida no personágem
 class Efeitovida(pygame.sprite.Sprite):
@@ -114,7 +113,7 @@ class Efeitovida(pygame.sprite.Sprite):
         self.lastupdate=pygame.time.get_ticks()
         
         #tempo para proxima imagem ser mostrada
-        self.frame_ticks
+        self.frame_ticks = 70
     def update(self):
         #verifica o tempo
         now=pygame.time.get_ticks()
