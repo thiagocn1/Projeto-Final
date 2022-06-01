@@ -3,7 +3,7 @@ from Candidatos import Candidatos
 from configuracoes import *
 from os import path
 import random
-from Animacoes import animacao_vida, animacao_dano
+from Animacoes import load_animacoes
 #Classe do personagem controlado 
 class Player(pygame.sprite.Sprite):
     def __init__(self,nome):
@@ -56,7 +56,8 @@ class Efeitodano(pygame.sprite.Sprite):
     #construtor classe
     def __init__(self,posicao):
         pygame.sprite.Sprite.__init__(self)
-        
+        animacoes=load_animacoes()
+        animacao_dano=animacoes[0]
         self.animation_dano=animacao_dano
         
         #para iniciar o processo de animação frame por frame
@@ -94,10 +95,12 @@ class Efeitodano(pygame.sprite.Sprite):
                 self.rect.center = center
 
 #classe animação de vida no personágem
-class Efeitodano(pygame.sprite.Sprite):
+class Efeitovida(pygame.sprite.Sprite):
     #construtor classe
     def __init__(self,posicao):
         pygame.sprite.Sprite.__init__(self)
+        animacoes=load_animacoes()
+        animacao_vida=animacoes[1]
         
         self.animation_vida=animacao_vida
         
