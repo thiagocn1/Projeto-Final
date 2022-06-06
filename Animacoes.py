@@ -10,7 +10,7 @@ from configuracoes import *
 #animação dano
 def load_animacoes():
     animacao_dano=[]
-    for i in range(0,10):
+    for i in range(1,10):
         #arquivos de animação numerado de 0 a 9
         filename=os.path.join(ANI_DIR,"Dano_ambos_0{}.png".format(i))
         img=pygame.image.load(filename).convert()
@@ -22,7 +22,7 @@ def load_animacoes():
     animacao_vida=[]
     for i in range(0,10):
         #arquivos de animação numerado de 0 a 9
-        filename=os.path.join(ANI_DIR,"Vida_0{}.png".format(i))
+        filename=os.path.join(ANI_DIR,"Vida_0{}-removebg-preview.png".format(i))
         img=pygame.image.load(filename).convert()
         img=pygame.transform.scale(img,(100,100))
         animacao_vida.append(img)
