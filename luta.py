@@ -32,7 +32,6 @@ def luta_screen(window,personagem):
     #----Loop principal-----
     rodando=True
     ataque_script = None
-    tempo_ataque = 0
     PODE_ATACAR = 'PODE_ATACAR'
     ATACANDO = 'ATACANDO'
     ANIMACAO_ATAQUE = 'ANIMACAO_ATAQUE'
@@ -41,23 +40,32 @@ def luta_screen(window,personagem):
     ANIMACAO_CATAQUE = 'ANIMACAO_CATAQUE'
     SCRIPT_CATAQUE = 'SCRIPT_CATAQUE'
     tipo_ataque=0
+    tempo = 0
+    tempo_script_ataque = 0
+    tempo_script_cataque = 0
 
     estado = PODE_ATACAR
-    tempo = 0
-    tempo_script=0
     while rodando:
         tempo += 1
         clock.tick(60)
-        
+        if estado == SCRIPT_CATAQUE:
+            tempo_script_cataque +=1
+            tempo_script_ataque = 0
+        elif estado == SCRIPT_ATAQUE:
+            tempo_script_ataque += 1 
+            tempo_script_cataque=0
+        else:
+            tempo_script_ataque = 0
+            tempo_script_cataque = 0
         #------eventos-------
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
                 rodando=False
             if estado == PODE_ATACAR:
-                print('pode atacar')
+                
                 if event.type==pygame.KEYDOWN:
                         estado=ATACANDO
-                        print('estado atacando')
+                        
                         if event.key==pygame.K_1:
                             tempo = 0
                             dano=player.atacar(0)
@@ -101,26 +109,26 @@ def luta_screen(window,personagem):
                             #delimita tipo de ataque para animação depois
                             tipo_ataque=4
 
-                        estado=SCRIPT_ATAQUE
-                        print('estado script ataque')   
+                        estado=ANIMACAO_ATAQUE
+                          
         
         if estado == CATACANDO:
             
             #ataque adversário 
-            dano_contra,i=contra.ataque_contra()
+            dano_contra,tipo_cataque=contra.ataque_contra()
             #mensagem que adversário devolve
-            ataque_contra_script=Candidatos['{}'.format(contra.nome)]['movimentos'][i][3]
+            ataque_contra_script=Candidatos['{}'.format(contra.nome)]['movimentos'][tipo_cataque][3]
             text_ataque_contra=nome_font.render("{}".format(ataque_contra_script),True,(0,0,0))
             #variaveis dependendo do ataque que adversário usa
-            if i==0 or i==1:
+            if tipo_cataque==0 or tipo_cataque==1:
                 player.hp-=dano_contra
-            elif i==2:
+            elif tipo_cataque==2:
                 contra.hp+=dano_contra
             else:
                 player.hp-=dano_contra
                 contra.hp-=dano_contra/4
-            estado=SCRIPT_CATAQUE
-            print('estado scriptcataque')
+            estado=ANIMACAO_CATAQUE
+            
 
  
 
@@ -160,13 +168,13 @@ def luta_screen(window,personagem):
         if estado == SCRIPT_ATAQUE :
                 ataque_rect_pos=(30,(HEIGHT-70))
                 window.blit(text_ataque,ataque_rect_pos)
-                estado = ANIMACAO_ATAQUE
-                print('estado animação ataque')
+                if tempo_script_ataque > 60:
+                    estado = CATACANDO
+                    tempo_script_ataque = 0
+                    
                 
             
         if estado==ANIMACAO_ATAQUE:
-            print('entrei na animação')
-            print(tipo_ataque)
             #adicionar animação
             if tipo_ataque==1:
                 efeito= Efeitodano(contra.rect.center)
@@ -183,14 +191,43 @@ def luta_screen(window,personagem):
                 efeito=Efeitodano(contra.rect.center)
                 all_sprites.add(efeito)
                 
-            estado = CATACANDO
-            print('estado CATACANDO')
+            estado = SCRIPT_ATAQUE
+            
+        
+        if estado==ANIMACAO_CATAQUE:
+            
+            print(tipo_cataque)
+
+            #adicionar animação
+            if tipo_cataque==0:
+                efeito= Efeitodano(player.rect.center)
+                all_sprites.add(efeito)
+                print('éntrou na 1')
+            elif tipo_cataque==1:
+                efeito= Efeitodano(player.rect.center)
+                all_sprites.add(efeito)
+                print('éntrou na 2')
+            elif tipo_cataque==2:
+                efeito= Efeitovida(contra.rect.center)
+                all_sprites.add(efeito)
+                print('éntrou na 3')
+            elif tipo_cataque==3:
+                efeito= Efeitodano(contra.rect.center)
+                all_sprites.add(efeito)
+                efeito=Efeitodano(player.rect.center)
+                all_sprites.add(efeito)
+                print('éntrou na 4')
+                
+            estado = SCRIPT_CATAQUE
+            
 
         if estado ==  SCRIPT_CATAQUE:
             ataque_contra_rect=(30,(HEIGHT-40))
             window.blit(text_ataque_contra,ataque_contra_rect)
-            estado=PODE_ATACAR
-            print('pode atacar')
+            if tempo_script_cataque > 60:
+                tempo_script_cataque = 0
+                estado=PODE_ATACAR
+                
         
         if player.hp<=0 or contra.hp<=0:
             print('ENCERRANDO')
