@@ -202,21 +202,17 @@ def luta_screen(window,personagem):
             if tipo_cataque==0:
                 efeito= Efeitodano(player.rect.center)
                 all_sprites.add(efeito)
-                print('éntrou na 1')
             elif tipo_cataque==1:
                 efeito= Efeitodano(player.rect.center)
                 all_sprites.add(efeito)
-                print('éntrou na 2')
             elif tipo_cataque==2:
                 efeito= Efeitovida(contra.rect.center)
                 all_sprites.add(efeito)
-                print('éntrou na 3')
             elif tipo_cataque==3:
                 efeito= Efeitodano(contra.rect.center)
                 all_sprites.add(efeito)
                 efeito=Efeitodano(player.rect.center)
                 all_sprites.add(efeito)
-                print('éntrou na 4')
                 
             estado = SCRIPT_CATAQUE
             
@@ -233,7 +229,12 @@ def luta_screen(window,personagem):
             print('ENCERRANDO')
             print(player.hp,'player')
             print(contra.hp)
-            return ENCERRAR
+            if player.hp>0 and contra.hp<0:
+                print('VITORIA')
+                return TELA,VITORIA
+            else:
+                print('DERROTA')
+                return TELA,DERROTA
 
          
         all_sprites.update()
