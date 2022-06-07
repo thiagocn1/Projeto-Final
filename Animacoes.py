@@ -14,7 +14,7 @@ def load_animacoes():
         #arquivos de animação numerado de 0 a 9
         filename=os.path.join(ANI_DIR,"Dano_ambos_0{}-removebg-preview.png".format(i))
         img=pygame.image.load(filename).convert_alpha()
-        img=pygame.transform.scale(img,(100,100))
+        img=pygame.transform.scale(img,(WIDTH/6,HEIGHT/4))
         animacao_dano.append(img)
 
 
@@ -24,7 +24,7 @@ def load_animacoes():
         #arquivos de animação numerado de 0 a 9
         filename=os.path.join(ANI_DIR,"Vida_0{}-removebg-preview.png".format(i))
         img=pygame.image.load(filename).convert_alpha()
-        img=pygame.transform.scale(img,(100,100))
+        img=pygame.transform.scale(img,(WIDTH/6,HEIGHT/4))
         animacao_vida.append(img)
     animacoes=[animacao_dano,animacao_vida]
     return animacoes

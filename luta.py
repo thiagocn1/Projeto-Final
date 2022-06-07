@@ -140,33 +140,33 @@ def luta_screen(window,personagem):
         window.blit(player.image_small,player.rect)
         window.blit(contra.image_small,contra.rect)
         #vida do player ( barra de vida em cima  )
-        pygame.draw.polygon(window, BLACK, [(30, 10), (130, 10), (130, 30), (30, 30)])
-        pygame.draw.polygon(window, (0,128,0), [(30, 10), ((player.hp+30), 10), ((player.hp+30), 30), (30, 30)])
+        pygame.draw.polygon(window, BLACK, [(WIDTH/20, HEIGHT/40), (WIDTH/4.615, HEIGHT/40), (WIDTH/4.615, HEIGHT/13.33333), (WIDTH/20, HEIGHT/13.33333)])
+        pygame.draw.polygon(window, (0,128,0), [(WIDTH/20, HEIGHT/40), ((player.hp+WIDTH/20), HEIGHT/40), ((player.hp+WIDTH/20), HEIGHT/13.33333), (WIDTH/20, HEIGHT/13.33333)])
         #vida do contra (barra de vida em cima )
-        pygame.draw.polygon(window, BLACK, [(470, 10), (570, 10), (570, 30), (470, 30)])
-        pygame.draw.polygon(window, (0,128,0), [(470, 10), ((contra.hp+470), 10), ((contra.hp+470), 30), (470, 30)])
+        pygame.draw.polygon(window, BLACK, [(WIDTH/1.27659, HEIGHT/40), (WIDTH/1.0526, HEIGHT/40), (WIDTH/1.0526, HEIGHT/13.33333), (WIDTH/1.27659, HEIGHT/13.33333)])
+        pygame.draw.polygon(window, (0,128,0), [(WIDTH/1.27659, HEIGHT/40), ((contra.hp+WIDTH/1.2765), HEIGHT/40), ((contra.hp+WIDTH/1.2765), HEIGHT/13.33333), (WIDTH/1.27659, HEIGHT/13.33333)])
         #caixa ataque blit
         if estado == PODE_ATACAR:
-            window.blit(caixa_ataques_small,(0,(HEIGHT-100)))
+            window.blit(caixa_ataques_small,(0,(HEIGHT-HEIGHT/4)))
             for i in range(0,4):
                 ataque=Candidatos['{}'.format(personagem)]['movimentos'][i][0]
                 text_surface=nome_font.render("{}".format(ataque),True,(0,0,0))
                 text_rect=text_surface.get_rect()
                 if i==1:
-                    text_rect_pos=(80,(HEIGHT-40))
+                    text_rect_pos=(WIDTH/7.5,(HEIGHT-HEIGHT/10))
                     window.blit(text_surface,text_rect_pos)
                 elif i==3:
-                    text_rect_pos=(360,(HEIGHT-40))
+                    text_rect_pos=(WIDTH/1.666,(HEIGHT-HEIGHT/10))
                     window.blit(text_surface,text_rect_pos)
                 elif i==0:
-                    text_rect_pos=(80,(HEIGHT-70))
+                    text_rect_pos=(WIDTH/7.5,(HEIGHT-HEIGHT/5.71428571))
                     window.blit(text_surface,text_rect_pos)
                 elif i==2:
-                    text_rect_pos=(360,(HEIGHT-70))
+                    text_rect_pos=(WIDTH/1.666,(HEIGHT-HEIGHT/5.71428571))
                     window.blit(text_surface,text_rect_pos)
     
         if estado == SCRIPT_ATAQUE :
-                ataque_rect_pos=(30,(HEIGHT-70))
+                ataque_rect_pos=(WIDTH/20,(HEIGHT-HEIGHT/5.71428571))
                 window.blit(text_ataque,ataque_rect_pos)
                 if tempo_script_ataque > 60:
                     estado = CATACANDO
@@ -222,7 +222,7 @@ def luta_screen(window,personagem):
             
 
         if estado ==  SCRIPT_CATAQUE:
-            ataque_contra_rect=(30,(HEIGHT-40))
+            ataque_contra_rect=(WIDTH/20,(HEIGHT-HEIGHT/10))
             window.blit(text_ataque_contra,ataque_contra_rect)
             if tempo_script_cataque > 60:
                 tempo_script_cataque = 0

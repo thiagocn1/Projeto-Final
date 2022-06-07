@@ -4,8 +4,8 @@ from os import path
 IMG_DIR=path.join(path.dirname(__file__),'assets', 'img')
 ANI_DIR=path.join(path.dirname(__file__),'assets', 'animacao')
 
-WIDTH=600
-HEIGHT=400
+WIDTH=1200
+HEIGHT=800
 
 MENU=0
 ENCERRAR=2

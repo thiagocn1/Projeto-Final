@@ -10,14 +10,14 @@ class Player(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         nois=Candidatos[nome]['imagem']
         self.image=pygame.image.load(path.join(IMG_DIR,nois)).convert_alpha()
-        self.image_small=pygame.transform.scale(self.image,(125,125))
+        self.image_small=pygame.transform.scale(self.image,(WIDTH/4.8,HEIGHT/3.2))
         self.rect=self.image_small.get_rect()
         self.nome=nome
         self.movimentos=Candidatos['{}'.format(nome)]['movimentos']
         self.ataque=Candidatos['{}'.format(nome)]['ataque'] 
         self.hp=Candidatos['{}'.format(nome)] ['hp']  #quanto de vida ele tem
-        self.rect.centerx= 100
-        self.rect.centery= 125
+        self.rect.centerx= WIDTH/6
+        self.rect.centery= HEIGHT/3.2
 
     #luta entre dois casas quando escolher um ataque
     def atacar(self,i):
@@ -38,14 +38,14 @@ class Contra(pygame.sprite.Sprite):
         nome=lista[i]
         nois=Candidatos[nome]['imagem']
         self.image=pygame.image.load(path.join(IMG_DIR,nois)).convert_alpha()
-        self.image_small=pygame.transform.scale(self.image,(125,125))
+        self.image_small=pygame.transform.scale(self.image,(WIDTH/4.8,HEIGHT/3.2))
         self.rect=self.image_small.get_rect()
         self.nome=nome
         self.movimentos=Candidatos['{}'.format(nome)]['movimentos']
         self.ataque=Candidatos['{}'.format(nome)]['ataque'] 
         self.hp=Candidatos['{}'.format(nome)] ['hp']  #quanto de vida ele tem
-        self.rect.centerx= 500
-        self.rect.centery= 125
+        self.rect.centerx= WIDTH/1.2
+        self.rect.centery= HEIGHT/3.2
     def ataque_contra(self):
         i=random.randint(0,3)
         dano_ataque=Candidatos[self.nome]['movimentos'][i][1]
