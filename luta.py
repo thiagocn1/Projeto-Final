@@ -256,28 +256,29 @@ def luta_screen(window,personagem):
         #aqui faz as condições se perde ou ganha
         #ela vai mandar isso para o arquivo jogo final
         #e vai delimitar a tela que se vai receber ou de vitoria ou de derrota
-        if player.hp<=0 or contra.hp<=0:
-            print('ENCERRANDO')
-            print(player.hp,'player')
-            print(contra.hp)
-            if player.hp>0 and contra.hp<=0:
-                print('VITORIA')
-                pygame.mixer.music.stop()
-                pygame.mixer.music.load(os.path.join(SND_DIR, 'v.mp3'))
-                pygame.mixer.music.play(loops=1)
-                return TELA,VITORIA
-            elif contra.hp>0 and player.hp<=0:
-                print('EMPATE')
-                pygame.mixer.music.stop()
-                pygame.mixer.music.load(os.path.join(SND_DIR, 'derrota.mp3'))
-                pygame.mixer.music.play(loops=1)
-                return TELA, EMPATE
-            else:
-                print('DERROTA')
-                pygame.mixer.music.stop()
-                pygame.mixer.music.load(os.path.join(SND_DIR, 'derrota.mp3'))
-                pygame.mixer.music.play(loops=1)
-                return TELA,DERROTA
+        if estado==PODE_ATACAR:
+            if player.hp<=0 or contra.hp<=0:
+                print('ENCERRANDO')
+                print(player.hp,'player')
+                print(contra.hp)
+                if player.hp>0 and contra.hp<=0:
+                    print('VITORIA')
+                    pygame.mixer.music.stop()
+                    pygame.mixer.music.load(os.path.join(SND_DIR, 'v.mp3'))
+                    pygame.mixer.music.play(loops=1)
+                    return TELA,VITORIA
+                elif contra.hp>0 and player.hp<=0:
+                    print('EMPATE')
+                    pygame.mixer.music.stop()
+                    pygame.mixer.music.load(os.path.join(SND_DIR, 'derrota.mp3'))
+                    pygame.mixer.music.play(loops=1)
+                    return TELA, EMPATE
+                else:
+                    print('DERROTA')
+                    pygame.mixer.music.stop()
+                    pygame.mixer.music.load(os.path.join(SND_DIR, 'derrota.mp3'))
+                    pygame.mixer.music.play(loops=1)
+                    return TELA,DERROTA
 
          
         all_sprites.update()
