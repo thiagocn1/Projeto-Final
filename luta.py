@@ -199,7 +199,7 @@ def luta_screen(window,personagem):
         if estado == SCRIPT_ATAQUE :
                 ataque_rect_pos=(WIDTH/20,(HEIGHT-HEIGHT/5.71428571))
                 window.blit(text_ataque,ataque_rect_pos)
-                if tempo_script_ataque > 120:
+                if tempo_script_ataque > 180:
                     estado = CATACANDO
                     tempo_script_ataque = 0
                     
@@ -251,7 +251,7 @@ def luta_screen(window,personagem):
         if estado ==  SCRIPT_CATAQUE:
             ataque_contra_rect=(WIDTH/20,(HEIGHT-HEIGHT/10))
             window.blit(text_ataque_contra,ataque_contra_rect)
-            if tempo_script_cataque > 120:
+            if tempo_script_cataque > 180:
                 tempo_script_cataque = 0
                 estado=PODE_ATACAR
                 
