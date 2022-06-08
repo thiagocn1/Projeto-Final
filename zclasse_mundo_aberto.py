@@ -33,3 +33,13 @@ class Rua(pygame.sprite.Sprite):
         self.rect=self.image.get_rect()
         self.rect.centerx= pos[0]
         self.rect.centery= pos[1]
+
+class Candidato(pygame.sprite.Sprite):
+    def __init__(self,pos):
+        pygame.sprite.Sprite.__init__(self)
+        #falta colocar a imagem
+        self.image=pygame.image.load(path.join(IMG_DIR,'Ciro.png')).convert_alpha()
+        self.image=pygame.transform.scale(self.image,(WIDTH/20,HEIGHT/20))
+        self.rect=self.image.get_rect()
+        self.rect.centerx= pos[0]
+        self.rect.centery= pos[1]

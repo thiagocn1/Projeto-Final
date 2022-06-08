@@ -9,7 +9,7 @@ clock=pygame.time.Clock()
 screen=pygame.display.set_mode((WIDTH,HEIGHT))
 mapa_sprittes= pygame.sprite.Group()
 tchsuco_sprittes=pygame.sprite.Group()
-
+versus_sprittes=pygame.sprite.Group()
 class Cenario:
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
@@ -22,14 +22,17 @@ class Cenario:
                 if coluna=='X':
                     rua=Rua([x,y])
                     mapa_sprittes.add(rua)
-                if coluna =="p":
-                    i=1
+                if coluna =="c":
+                    candidato=Candidato([x,y])
+                    versus_sprittes.add(candidato)
+
                     
 
-def mundo_screen(screen):
+def mundo_screen(screen,nome):
     rodando='s'
     tchusco=mapa_player()
     tchsuco_sprittes.add(tchusco)
+    Cenario.criar_mapa(screen)
     while rodando=='s':
         clock.tick(60)
         #-----Eventos------
@@ -57,9 +60,8 @@ def mundo_screen(screen):
                             tchusco.vx+=8
 
         screen.fill((0,0,0))
-        Cenario.criar_mapa(screen)
-        mapa_sprittes.update()
         tchsuco_sprittes.update()
+        versus_sprittes.update()
         #colide entre coisa do mapa e o player
         encontros=pygame.sprite.spritecollide(tchusco,mapa_sprittes,False)
         #verifica se tem colisão e não deixa passar 
@@ -68,13 +70,17 @@ def mundo_screen(screen):
                 tchusco.rect.centerx-=tchusco.vx
             if tchusco.vy!=0:
                 tchusco.rect.centery-=tchusco.vy
-
+        lutas=pygame.sprite.spritecollide(tchusco,versus_sprittes,True)
+        if lutas:
+            return LUTA,nome
+            print('lutem')
         #gera saidas
         tchsuco_sprittes.draw(screen)
         mapa_sprittes.draw(screen)
+        versus_sprittes.draw(screen)
         pygame.display.update()
         pygame.time.delay(100)
 
-ok=mundo_screen(screen)
+ok=mundo_screen(screen, 'tio do cleber')
 
 pygame.quit()
