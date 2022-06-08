@@ -5,8 +5,14 @@ from configuracoes import *
 from Candidatos import Candidatos
 from Classes import Contra, Efeitodano, Efeitovida, Player
 import time
+import os
+pygame.mixer.init()
+
 
 def luta_screen(window,personagem):
+    pygame.mixer.music.load(os.path.join(SND_DIR, 'luta.mp3'))
+    pygame.mixer.music.play(loops=-1)
+    
     #unidade de tempo
     clock=pygame.time.Clock()
     
@@ -243,12 +249,17 @@ def luta_screen(window,personagem):
             print(contra.hp)
             if player.hp>0 and contra.hp<=0:
                 print('VITORIA')
+                pygame.mixer.music.stop()
+                pygame.mixer.music.load(os.path.join(SND_DIR, 'v.mp3'))
+                pygame.mixer.music.play(loops=-1)
                 return MAPA2,personagem
             elif contra.hp>0 and player.hp<=0:
                 print('EMPATE')
+                pygame.mixer.music.stop()
                 return TELA, EMPATE
             else:
                 print('DERROTA')
+                pygame.mixer.music.stop()
                 return TELA,DERROTA
 
          

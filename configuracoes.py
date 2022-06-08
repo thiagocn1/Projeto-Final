@@ -4,7 +4,7 @@ from os import path
 #PATH PARA CONSEEGUIR ACESSAR AS IMAGENS E AS ANIMAÇÕES
 IMG_DIR=path.join(path.dirname(__file__),'assets', 'img')
 ANI_DIR=path.join(path.dirname(__file__),'assets', 'animacao')
-
+SND_DIR=path.join(path.dirname(__file__),'assets','snd')
 #TAMANHO DA TELA (PODE ALTERAR, NAO VAI ZUAR TAMANHO DE NADA)
 #TUDO TA FEITO COM BASE NESSAS VARIAVEIS
 WIDTH=1200

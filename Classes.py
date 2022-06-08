@@ -27,18 +27,19 @@ class Player(pygame.sprite.Sprite):
 
 
         
-class Button():
+class Button(pygame.sprite.Sprite):
     def __init__(self, x, y, img,scale):
         pygame.sprite.Sprite.__init__(self)
         widht = WIDTH/2
         height = HEIGHT/4
-        self.img = pygame.transform.scale(img, (int(widht*scale)),(int(height*scale)))
-        self.rect = self.img.get_rect()
+        self.image = pygame.transform.scale(img, (int(widht*scale),int(height*scale)))
+        self.rect = self.image.get_rect()
         self.rect.topleft = (x,y)
         self.clicked = False
+
         
     def screen (self,window):
-        window.blit(self.img, (self.rect.x, self.rect.y))
+        window.blit(self.image, (self.rect.x, self.rect.y))
     
     def click(self):
         sair = False

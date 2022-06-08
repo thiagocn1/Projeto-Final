@@ -7,6 +7,10 @@ from Candidatos import Candidatos
 from configuracoes import *
 import time
 from Classes import Button
+import os
+pygame.mixer.init()
+
+
 
 def jogar_novamente_screen(screen,condicao,WIDTH, HEIGHT):
     #unidade de tempo
@@ -30,53 +34,29 @@ def jogar_novamente_screen(screen,condicao,WIDTH, HEIGHT):
 
 
     rodando = True
+    tempo=0
     while rodando:
         clock.tick(60)
         screen.fill((0,0,0))
-        if condicao == VITORIA:
-            screen.blit(Vitoria_small,(0,0))
-            sair_button.draw(screen)
-            jogarnv_button.draw(screen)
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    Status = ENCERRAR
-                    rodando = False
-                if sair_button.click() == True:
-                    Status = ENCERRAR
-                    rodando = False
-                if jogarnv_button.click() == False:
-                    Status = MENU
-                    rodando = False
-            
-            
-        if condicao == DERROTA or condicao == EMPATE:
-            screen.blit(Derrota_small,(0,0))
-            sair_button.draw(screen)
-            jogarnv_button.draw(screen)
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    Status = ENCERRAR
-                    rodando = False
-                if sair_button.click() == True:
-                    Status = ENCERRAR
-                    rodando = False
-                if jogarnv_button.click() == False:
-                    Status = MENU
-                    rodando = False
-    
-
-    return Status
-        
+        #eventos
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                rodando=False
 
         #carregar o fundo da tela de menu
-'''if condicao==VITORIA:
+        if condicao==VITORIA:
+            
             Derrota=pygame.image.load(path.join(IMG_DIR, 'Vitoria.png')).convert()
             Derrota_small = pygame.transform.scale(Derrota, (WIDTH, HEIGHT))
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    rodando=False
 
             #primeira tela final
             screen.fill((0,0,0))
             screen.blit(Derrota_small,(0,0))
             pygame.display.update()
+        
         elif condicao==EMPATE:
             Derrota=pygame.image.load(path.join(IMG_DIR, 'GameOver.png')).convert()
             Derrota_small = pygame.transform.scale(Derrota, (WIDTH, HEIGHT))
@@ -93,5 +73,7 @@ def jogar_novamente_screen(screen,condicao,WIDTH, HEIGHT):
             #terceira tela de final
             screen.fill((0,0,0))
             screen.blit(Derrota_small,(0,0))
-            pygame.display.update()'''
+            pygame.display.update()
+    return ENCERRAR
+
 
