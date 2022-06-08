@@ -241,10 +241,10 @@ def luta_screen(window,personagem):
             print('ENCERRANDO')
             print(player.hp,'player')
             print(contra.hp)
-            if player.hp>0 and contra.hp<0:
+            if player.hp>0 and contra.hp<=0:
                 print('VITORIA')
-                return TELA,VITORIA
-            elif contra.hp>0 and player.hp<0:
+                return MAPA2,personagem
+            elif contra.hp>0 and player.hp<=0:
                 print('EMPATE')
                 return TELA, EMPATE
             else:
