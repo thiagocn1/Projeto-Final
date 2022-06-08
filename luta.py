@@ -252,7 +252,7 @@ def luta_screen(window,personagem):
                 pygame.mixer.music.stop()
                 pygame.mixer.music.load(os.path.join(SND_DIR, 'v.mp3'))
                 pygame.mixer.music.play(loops=-1)
-                return MAPA2,personagem
+                return TELA,VITORIA
             elif contra.hp>0 and player.hp<=0:
                 print('EMPATE')
                 pygame.mixer.music.stop()
