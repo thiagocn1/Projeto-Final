@@ -8,21 +8,25 @@ player = ''
 def menu_screen(screen,WIDTH, HEIGHT):
     #unidade de tempo
     clock=pygame.time.Clock()
-    clock.tick(60)
+    clock.tick(FPS)
+    tempo=0
+    while tempo<60:
+        tempo+=1
+        #carregar o fundo da tela de menu
+        fundo1=pygame.image.load(path.join(IMG_DIR, 'Warning.png')).convert()
+        fundo2 = pygame.image.load(path.join(IMG_DIR, 'Imagemdefundo.png')).convert()
+        fundo1_small = pygame.transform.scale(fundo1, (WIDTH, HEIGHT))
+        fundo2_small = pygame.transform.scale(fundo2, (WIDTH, HEIGHT))
+        tela_fundo1_rect = fundo1.get_rect()
+        tela_fundo2_rect = fundo2.get_rect()
 
-    #carregar o fundo da tela de menu
-    fundo1=pygame.image.load(path.join(IMG_DIR, 'Warning.png')).convert()
-    fundo2 = pygame.image.load(path.join(IMG_DIR, 'Imagemdefundo.png')).convert()
-    fundo1_small = pygame.transform.scale(fundo1, (WIDTH, HEIGHT))
-    fundo2_small = pygame.transform.scale(fundo2, (WIDTH, HEIGHT))
-    tela_fundo1_rect = fundo1.get_rect()
-    tela_fundo2_rect = fundo2.get_rect()
+        
+        #primeira tela de aviso
+        screen.fill((0,0,0))
+        screen.blit(fundo1_small,(0,0))
+        pygame.display.update()
 
-    #primeira tela de aviso
-    screen.fill((0,0,0))
-    screen.blit(fundo1_small,(0,0))
-    pygame.display.update()
-    time.sleep(1)
+    
 
     
 

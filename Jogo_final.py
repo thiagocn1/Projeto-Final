@@ -1,7 +1,7 @@
 #importar todas as outras bibliotecas
 import pygame
 from Menu import menu_screen
-from final import final_screen
+from jogar_novamente import jogar_novamente_screen
 from luta import luta_screen
 from configuracoes import *
 pygame.init()
@@ -22,7 +22,7 @@ while Status != ENCERRAR:
         Status,condicao= luta_screen(window,nome)
     elif Status==TELA:
         print('entrou no elif')
-        Status=final_screen(window,condicao,WIDTH,HEIGHT)
+        Status=jogar_novamente_screen(window,condicao,WIDTH,HEIGHT)
     else:
         print('encerrou realmente')
         Status= ENCERRAR

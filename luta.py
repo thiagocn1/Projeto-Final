@@ -23,7 +23,7 @@ def luta_screen(window,personagem):
     caixa_ataques_small=pygame.transform.scale(caixa_ataques,(WIDTH,HEIGHT/4))  
 
     #carrega fonte que será utilizado 
-    nome_font=pygame.font.Font('assets/font/PressStart2P.ttf',10)
+    nome_font=pygame.font.Font('assets/font/PressStart2P.ttf',20)
 
     #criar variavel para delimitar quando a tecla funciona
 
@@ -232,6 +232,9 @@ def luta_screen(window,personagem):
             if player.hp>0 and contra.hp<0:
                 print('VITORIA')
                 return TELA,VITORIA
+            elif contra.hp>0 and player.hp<0:
+                print('EMPATE')
+                return TELA, EMPATE
             else:
                 print('DERROTA')
                 return TELA,DERROTA
