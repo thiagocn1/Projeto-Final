@@ -6,7 +6,6 @@ pygame.init()
 clock=pygame.time.Clock()
 
 #gera tela de jogo 
-screen=pygame.display.set_mode((WIDTH,HEIGHT))
 mapa_sprittes= pygame.sprite.Group()
 tchsuco_sprittes=pygame.sprite.Group()
 versus_sprittes=pygame.sprite.Group()
@@ -28,9 +27,14 @@ class Cenario:
 
                     
 
-def mundo_screen(screen,nome):
+
+
+
+def mundo_screen2(screen,nome,x,y):
     rodando='s'
     tchusco=mapa_player()
+    tchusco.rect.centerx=x-50
+    tchusco.rect.centery=y-50
     tchsuco_sprittes.add(tchusco)
     Cenario.criar_mapa(screen)
     while rodando=='s':
@@ -72,15 +76,12 @@ def mundo_screen(screen,nome):
                 tchusco.rect.centery-=tchusco.vy
         lutas=pygame.sprite.spritecollide(tchusco,versus_sprittes,True)
         if lutas:
-            return LUTA,nome
+            tchusco.kill()
+            return LUTA,nome,tchusco.rect.centerx,tchusco.rect.centery
+        
             print('lutem')
         #gera saidas
         tchsuco_sprittes.draw(screen)
         mapa_sprittes.draw(screen)
         versus_sprittes.draw(screen)
         pygame.display.update()
-        pygame.time.delay(100)
-
-ok=mundo_screen(screen, 'tio do cleber')
-
-pygame.quit()

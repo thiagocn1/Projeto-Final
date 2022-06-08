@@ -65,7 +65,7 @@ def menu_screen(screen,WIDTH, HEIGHT):
                     player = 'Doria'
                     continuar = False
     #retorna o luta para mudar de tela e o nome do personagem    
-    return LUTA, player
+    return MAPA2, player
         
 
                     
