@@ -19,7 +19,7 @@ Status=MENU
 numero_vitórias=0 
 x=WIDTH-100
 y=HEIGHT-100
-
+pygame.mixer.music.play(loops=-1)
 while Status != ENCERRAR:
 
     if Status==MENU: 
