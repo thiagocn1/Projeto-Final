@@ -23,6 +23,7 @@ x=WIDTH-100
 y=HEIGHT-100
 pygame.mixer.music.load(os.path.join(SND_DIR, 'musica.mp3'))
 pygame.mixer.music.play(loops=-1)
+pygame.mixer.music.set_volume(0.3)
 while Status != ENCERRAR:
 
     if Status==MENU: 
@@ -31,6 +32,7 @@ while Status != ENCERRAR:
     elif Status==LUTA:
         pygame.mixer.music.pause()
         pygame.mixer.music.play(loops=-1)
+        pygame.mixer.music.set_volume(0.3)
         Status,condicao= luta_screen(window,nome)
     elif Status==MAPA2:
         pygame.mixer.music.unpause()

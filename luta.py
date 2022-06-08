@@ -7,11 +7,17 @@ from Classes import Contra, Efeitodano, Efeitovida, Player
 import time
 import os
 pygame.mixer.init()
-
+haduken=pygame.mixer.Sound(os.path.join(SND_DIR, 'raduken.mp3'))
+haduken.set_volume(2)
+gemido=pygame.mixer.Sound(os.path.join(SND_DIR, 'gemido2.mp3'))
+gemido.set_volume(2)
+watchau=pygame.mixer.Sound(os.path.join(SND_DIR, 'watchau.mp3'))
+watchau.set_volume(2)
 
 def luta_screen(window,personagem):
     pygame.mixer.music.load(os.path.join(SND_DIR, 'luta1.mp3'))
     pygame.mixer.music.play(loops=-1)
+    pygame.mixer.music.set_volume(0.3)
     
     #unidade de tempo
     clock=pygame.time.Clock()
@@ -68,6 +74,7 @@ def luta_screen(window,personagem):
                         
                         #quando aperta 1
                         if event.key==pygame.K_1:
+                            pygame.mixer.Sound.play(haduken)
                             estado=ATACANDO
                             tempo = 0
                             dano=player.atacar(0)
@@ -84,6 +91,7 @@ def luta_screen(window,personagem):
                         #quando aperta 2
                         elif event.key==pygame.K_2:
                             estado=ATACANDO
+                            pygame.mixer.Sound.play(haduken)
                             dano=player.atacar(1)
                             #colocar mensagem quando atacar
                             ataque_script=Candidatos['{}'.format(personagem)]['movimentos'][1][2]
@@ -98,6 +106,7 @@ def luta_screen(window,personagem):
                         #quando aperta 3
                         elif event.key==pygame.K_3:
                             estado=ATACANDO
+                            pygame.mixer.Sound.play(gemido)
                             vida=player.atacar(2)
                             #colocar mensagem quando atacar
                             ataque_script=Candidatos['{}'.format(personagem)]['movimentos'][2][2]
@@ -113,6 +122,7 @@ def luta_screen(window,personagem):
                         #quando aperta 4
                         elif event.key==pygame.K_4:
                             estado=ATACANDO
+                            pygame.mixer.Sound.play(watchau)
                             dano=player.atacar(3)
                             #colocar mensagem quando atacar
                             ataque_script=Candidatos['{}'.format(personagem)]['movimentos'][3][2]
@@ -137,10 +147,13 @@ def luta_screen(window,personagem):
             text_ataque_contra=nome_font.render("{}".format(ataque_contra_script),True,(0,0,0))
             #variaveis dependendo do ataque que adversário usa
             if tipo_cataque==0 or tipo_cataque==1:
+                pygame.mixer.Sound.play(haduken)
                 player.hp-=dano_contra
             elif tipo_cataque==2:
+                pygame.mixer.Sound.play(gemido)
                 contra.hp+=dano_contra
             else:
+                pygame.mixer.Sound.play(watchau)
                 player.hp-=dano_contra
                 contra.hp-=dano_contra/4
             estado=ANIMACAO_CATAQUE
