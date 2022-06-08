@@ -27,6 +27,30 @@ class Player(pygame.sprite.Sprite):
 
 
         
+class Button():
+    def __init__(self, x, y, img,scale):
+        pygame.sprite.Sprite.__init__(self)
+        widht = WIDTH/2
+        height = HEIGHT/4
+        self.img = pygame.transform.scale(img, (int(widht*scale)),(int(height*scale)))
+        self.rect = self.img.get_rect()
+        self.rect.topleft = (x,y)
+        self.clicked = False
+        
+    def screen (self,window):
+        window.blit(self.img, (self.rect.x, self.rect.y))
+    
+    def click(self):
+        sair = False
+        #posição da seta
+        mouse = pygame.mouse.get_pos()
+        if self.rect.collidepoint(mouse):
+            if pygame.mouse.get_pressed()[0] == 1 and self.clicked == False:
+                self.clicked = True
+                sair = True
+            if pygame.mouse.get_pressed()[0] == 0:
+                self.clicked = False
+        return sair
 
 
 
