@@ -64,9 +64,9 @@ def luta_screen(window,personagem):
             if estado == PODE_ATACAR:
                 
                 if event.type==pygame.KEYDOWN:
-                        estado=ATACANDO
                         
                         if event.key==pygame.K_1:
+                            estado=ATACANDO
                             tempo = 0
                             dano=player.atacar(0)
                             #colocar mensagem quando atacar
@@ -76,8 +76,10 @@ def luta_screen(window,personagem):
                             contra.hp-=dano
                             #delimita tipo de ataque para a animação depois
                             tipo_ataque=1
+                            estado=ANIMACAO_ATAQUE
                         
                         elif event.key==pygame.K_2:
+                            estado=ATACANDO
                             dano=player.atacar(1)
                             #colocar mensagem quando atacar
                             ataque_script=Candidatos['{}'.format(personagem)]['movimentos'][1][2]
@@ -86,8 +88,10 @@ def luta_screen(window,personagem):
                             contra.hp-=dano
                             #delimita tipo de ataque para animação depois
                             tipo_ataque=2
+                            estado=ANIMACAO_ATAQUE
 
                         elif event.key==pygame.K_3:
+                            estado=ATACANDO
                             vida=player.atacar(2)
                             #colocar mensagem quando atacar
                             ataque_script=Candidatos['{}'.format(personagem)]['movimentos'][2][2]
@@ -97,8 +101,10 @@ def luta_screen(window,personagem):
                             player.hp+=vida
                             #delimita tipo de ataque para animação depois
                             tipo_ataque=3
+                            estado=ANIMACAO_ATAQUE
 
                         elif event.key==pygame.K_4:
+                            estado=ATACANDO
                             dano=player.atacar(3)
                             #colocar mensagem quando atacar
                             ataque_script=Candidatos['{}'.format(personagem)]['movimentos'][3][2]
@@ -108,8 +114,9 @@ def luta_screen(window,personagem):
                             contra.hp-=dano
                             #delimita tipo de ataque para animação depois
                             tipo_ataque=4
-
-                        estado=ANIMACAO_ATAQUE
+                            estado=ANIMACAO_ATAQUE
+                        else:
+                            pass
                           
         
         if estado == CATACANDO:
