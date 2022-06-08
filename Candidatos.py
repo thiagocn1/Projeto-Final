@@ -1,7 +1,7 @@
-#dicionário com especificações para cada candidato
+
 from configuracoes import WIDTH
 
-
+#dicionário com especificações para cada candidato
 Candidatos={'Lula':{
 'ataque':100,
 'hp':WIDTH/6,

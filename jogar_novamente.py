@@ -21,7 +21,7 @@ def jogar_novamente_screen(screen,condicao,WIDTH, HEIGHT):
             Derrota=pygame.image.load(path.join(IMG_DIR, 'GameOver.png')).convert()
             Derrota_small = pygame.transform.scale(Derrota, (WIDTH, HEIGHT))
 
-            #primeira tela de aviso
+            #primeira tela final
             screen.fill((0,0,0))
             screen.blit(Derrota_small,(0,0))
             pygame.display.update()
@@ -29,7 +29,7 @@ def jogar_novamente_screen(screen,condicao,WIDTH, HEIGHT):
             Derrota=pygame.image.load(path.join(IMG_DIR, 'GameOver.png')).convert()
             Derrota_small = pygame.transform.scale(Derrota, (WIDTH, HEIGHT))
 
-            #primeira tela de aviso
+            #segunda tela final
             screen.fill((0,0,0))
             screen.blit(Derrota_small,(0,0))
             pygame.display.update()
@@ -38,7 +38,7 @@ def jogar_novamente_screen(screen,condicao,WIDTH, HEIGHT):
             Derrota=pygame.image.load(path.join(IMG_DIR, 'GameOver.png')).convert()
             Derrota_small = pygame.transform.scale(Derrota, (WIDTH, HEIGHT))
 
-            #primeira tela de aviso
+            #terceira tela de final
             screen.fill((0,0,0))
             screen.blit(Derrota_small,(0,0))
             pygame.display.update()

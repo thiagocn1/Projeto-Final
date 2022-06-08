@@ -25,29 +25,23 @@ def luta_screen(window,personagem):
     #carrega fonte que será utilizado 
     nome_font=pygame.font.Font('assets/font/PressStart2P.ttf',20)
 
-    #criar variavel para delimitar quando a tecla funciona
 
     all_sprites = pygame.sprite.Group()
 
     #----Loop principal-----
     rodando=True
     ataque_script = None
-    PODE_ATACAR = 'PODE_ATACAR'
-    ATACANDO = 'ATACANDO'
-    ANIMACAO_ATAQUE = 'ANIMACAO_ATAQUE'
-    SCRIPT_ATAQUE = 'SCRIPT_ATAQUE'
-    CATACANDO = 'CATACANDO'
-    ANIMACAO_CATAQUE = 'ANIMACAO_CATAQUE'
-    SCRIPT_CATAQUE = 'SCRIPT_CATAQUE'
+   #criaçao de variaveis, principalmente para controlar tempo
     tipo_ataque=0
     tempo = 0
     tempo_script_ataque = 0
     tempo_script_cataque = 0
-
+    #começa while que repetira
     estado = PODE_ATACAR
     while rodando:
         tempo += 1
         clock.tick(60)
+        #para iniciar medição de tempo caso chegue nessas variaveis
         if estado == SCRIPT_CATAQUE:
             tempo_script_cataque +=1
             tempo_script_ataque = 0
@@ -55,6 +49,7 @@ def luta_screen(window,personagem):
             tempo_script_ataque += 1 
             tempo_script_cataque=0
         else:
+            #ele 0 para só comecar a medir quando entrar no estado certo
             tempo_script_ataque = 0
             tempo_script_cataque = 0
         #------eventos-------
@@ -65,6 +60,7 @@ def luta_screen(window,personagem):
                 
                 if event.type==pygame.KEYDOWN:
                         
+                        #quando aperta 1
                         if event.key==pygame.K_1:
                             estado=ATACANDO
                             tempo = 0
@@ -76,8 +72,10 @@ def luta_screen(window,personagem):
                             contra.hp-=dano
                             #delimita tipo de ataque para a animação depois
                             tipo_ataque=1
+                            #esta aqui dentro para não acontecer nada quando aperta outras téclas
                             estado=ANIMACAO_ATAQUE
                         
+                        #quando aperta 2
                         elif event.key==pygame.K_2:
                             estado=ATACANDO
                             dano=player.atacar(1)
@@ -88,8 +86,10 @@ def luta_screen(window,personagem):
                             contra.hp-=dano
                             #delimita tipo de ataque para animação depois
                             tipo_ataque=2
+                            #esta aqui dentro para não acontecer nada quando aperta outras téclas
                             estado=ANIMACAO_ATAQUE
 
+                        #quando aperta 3
                         elif event.key==pygame.K_3:
                             estado=ATACANDO
                             vida=player.atacar(2)
@@ -97,23 +97,26 @@ def luta_screen(window,personagem):
                             ataque_script=Candidatos['{}'.format(personagem)]['movimentos'][2][2]
                             text_ataque=nome_font.render("{}".format(ataque_script),True,(0,0,0))
 
-                            #tirar vida adiversário
+                            #poe vida no player 
                             player.hp+=vida
                             #delimita tipo de ataque para animação depois
                             tipo_ataque=3
+                            #esta aqui dentro para não acontecer nada quando aperta outras téclas
                             estado=ANIMACAO_ATAQUE
 
+                        #quando aperta 4
                         elif event.key==pygame.K_4:
                             estado=ATACANDO
                             dano=player.atacar(3)
                             #colocar mensagem quando atacar
                             ataque_script=Candidatos['{}'.format(personagem)]['movimentos'][3][2]
                             text_ataque=nome_font.render("{}".format(ataque_script),True,(0,0,0))
-                            #tirar vida adiversário
+                            #tirar vida adiversário e sua
                             player.hp-=dano/4
                             contra.hp-=dano
                             #delimita tipo de ataque para animação depois
                             tipo_ataque=4
+                            #esta aqui dentro para não acontecer nada quando aperta outras téclas
                             estado=ANIMACAO_ATAQUE
                         else:
                             pass
@@ -171,7 +174,7 @@ def luta_screen(window,personagem):
                 elif i==2:
                     text_rect_pos=(WIDTH/1.666,(HEIGHT-HEIGHT/5.71428571))
                     window.blit(text_surface,text_rect_pos)
-    
+        #aqui da print na messagem quando ataca do player
         if estado == SCRIPT_ATAQUE :
                 ataque_rect_pos=(WIDTH/20,(HEIGHT-HEIGHT/5.71428571))
                 window.blit(text_ataque,ataque_rect_pos)
@@ -180,9 +183,10 @@ def luta_screen(window,personagem):
                     tempo_script_ataque = 0
                     
                 
-            
+        #aqui faz a animação   
         if estado==ANIMACAO_ATAQUE:
             #adicionar animação
+            #animaçao varia dependendo da tecla de ataque
             if tipo_ataque==1:
                 efeito= Efeitodano(contra.rect.center)
                 all_sprites.add(efeito)
@@ -200,12 +204,11 @@ def luta_screen(window,personagem):
                 
             estado = SCRIPT_ATAQUE
             
-        
+        #animação do ataque do oponente
         if estado==ANIMACAO_CATAQUE:
-            
-            print(tipo_cataque)
 
             #adicionar animação
+            #animacao varia dependendo do ataque
             if tipo_cataque==0:
                 efeito= Efeitodano(player.rect.center)
                 all_sprites.add(efeito)
@@ -223,7 +226,7 @@ def luta_screen(window,personagem):
                 
             estado = SCRIPT_CATAQUE
             
-
+        #faz a mensagem do ataque do oponente
         if estado ==  SCRIPT_CATAQUE:
             ataque_contra_rect=(WIDTH/20,(HEIGHT-HEIGHT/10))
             window.blit(text_ataque_contra,ataque_contra_rect)
@@ -231,7 +234,9 @@ def luta_screen(window,personagem):
                 tempo_script_cataque = 0
                 estado=PODE_ATACAR
                 
-        
+        #aqui faz as condições se perde ou ganha
+        #ela vai mandar isso para o arquivo jogo final
+        #e vai delimitar a tela que se vai receber ou de vitoria ou de derrota
         if player.hp<=0 or contra.hp<=0:
             print('ENCERRANDO')
             print(player.hp,'player')

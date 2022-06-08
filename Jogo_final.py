@@ -11,6 +11,7 @@ window=pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.display.set_caption('Pokecrias')
 
 #mudar telas vai ser negocio do while
+#alteranod status vai passar de arquivo em arquivo
 
 Status=MENU
 

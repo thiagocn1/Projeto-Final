@@ -10,6 +10,8 @@ def menu_screen(screen,WIDTH, HEIGHT):
     clock=pygame.time.Clock()
     clock.tick(FPS)
     tempo=0
+    #tempo que vai ficar nessa mesma tela
+    
     while tempo<60:
         tempo+=1
         #carregar o fundo da tela de menu

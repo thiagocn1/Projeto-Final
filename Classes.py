@@ -23,6 +23,7 @@ class Player(pygame.sprite.Sprite):
     def atacar(self,i):
         dano_ataque=Candidatos[self.nome]['movimentos'][i][1]
         return dano_ataque
+        #so vai devolver dano, controle de vida está sendo feita no luta
 
 
         
