@@ -31,7 +31,6 @@ while Status != ENCERRAR:
     elif Status==LUTA:
         pygame.mixer.music.pause()
         pygame.mixer.music.play(loops=-1)
-        pygame.mixer.music.load(os.path.join(SND_DIR, 'LUTA.mp3'))
         Status,condicao= luta_screen(window,nome)
     elif Status==MAPA2:
         pygame.mixer.music.unpause()

@@ -10,7 +10,7 @@ pygame.mixer.init()
 
 
 def luta_screen(window,personagem):
-    pygame.mixer.music.load(os.path.join(SND_DIR, 'luta.mp3'))
+    pygame.mixer.music.load(os.path.join(SND_DIR, 'luta1.mp3'))
     pygame.mixer.music.play(loops=-1)
     
     #unidade de tempo
@@ -184,7 +184,7 @@ def luta_screen(window,personagem):
         if estado == SCRIPT_ATAQUE :
                 ataque_rect_pos=(WIDTH/20,(HEIGHT-HEIGHT/5.71428571))
                 window.blit(text_ataque,ataque_rect_pos)
-                if tempo_script_ataque > 60:
+                if tempo_script_ataque > 120:
                     estado = CATACANDO
                     tempo_script_ataque = 0
                     
@@ -236,7 +236,7 @@ def luta_screen(window,personagem):
         if estado ==  SCRIPT_CATAQUE:
             ataque_contra_rect=(WIDTH/20,(HEIGHT-HEIGHT/10))
             window.blit(text_ataque_contra,ataque_contra_rect)
-            if tempo_script_cataque > 60:
+            if tempo_script_cataque > 120:
                 tempo_script_cataque = 0
                 estado=PODE_ATACAR
                 
@@ -251,15 +251,19 @@ def luta_screen(window,personagem):
                 print('VITORIA')
                 pygame.mixer.music.stop()
                 pygame.mixer.music.load(os.path.join(SND_DIR, 'v.mp3'))
-                pygame.mixer.music.play(loops=-1)
+                pygame.mixer.music.play(loops=1)
                 return TELA,VITORIA
             elif contra.hp>0 and player.hp<=0:
                 print('EMPATE')
                 pygame.mixer.music.stop()
+                pygame.mixer.music.load(os.path.join(SND_DIR, 'derrota.mp3'))
+                pygame.mixer.music.play(loops=1)
                 return TELA, EMPATE
             else:
                 print('DERROTA')
                 pygame.mixer.music.stop()
+                pygame.mixer.music.load(os.path.join(SND_DIR, 'derrota.mp3'))
+                pygame.mixer.music.play(loops=1)
                 return TELA,DERROTA
 
          
