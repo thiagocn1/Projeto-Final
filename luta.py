@@ -139,24 +139,26 @@ def luta_screen(window,personagem):
                           
         
         if estado == CATACANDO:
-            
-            #ataque adversário 
-            dano_contra,tipo_cataque=contra.ataque_contra()
-            #mensagem que adversário devolve
-            ataque_contra_script=Candidatos['{}'.format(contra.nome)]['movimentos'][tipo_cataque][3]
-            text_ataque_contra=nome_font.render("{}".format(ataque_contra_script),True,(0,0,0))
-            #variaveis dependendo do ataque que adversário usa
-            if tipo_cataque==0 or tipo_cataque==1:
-                pygame.mixer.Sound.play(haduken)
-                player.hp-=dano_contra
-            elif tipo_cataque==2:
-                pygame.mixer.Sound.play(gemido)
-                contra.hp+=dano_contra
+            if contra.hp>0:
+                #ataque adversário 
+                dano_contra,tipo_cataque=contra.ataque_contra()
+                #mensagem que adversário devolve
+                ataque_contra_script=Candidatos['{}'.format(contra.nome)]['movimentos'][tipo_cataque][3]
+                text_ataque_contra=nome_font.render("{}".format(ataque_contra_script),True,(0,0,0))
+                #variaveis dependendo do ataque que adversário usa
+                if tipo_cataque==0 or tipo_cataque==1:
+                    pygame.mixer.Sound.play(haduken)
+                    player.hp-=dano_contra
+                elif tipo_cataque==2:
+                    pygame.mixer.Sound.play(gemido)
+                    contra.hp+=dano_contra
+                else:
+                    pygame.mixer.Sound.play(watchau)
+                    player.hp-=dano_contra
+                    contra.hp-=dano_contra/4
+                estado=ANIMACAO_CATAQUE
             else:
-                pygame.mixer.Sound.play(watchau)
-                player.hp-=dano_contra
-                contra.hp-=dano_contra/4
-            estado=ANIMACAO_CATAQUE
+                estado=PODE_ATACAR
             
 
  
