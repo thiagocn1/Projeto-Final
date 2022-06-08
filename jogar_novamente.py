@@ -38,11 +38,6 @@ def jogar_novamente_screen(screen,condicao,WIDTH, HEIGHT):
     while rodando:
         clock.tick(60)
         screen.fill((0,0,0))
-        #eventos
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                rodando=False
-
         #carregar o fundo da tela de menu
         if condicao==VITORIA:
             
@@ -51,7 +46,7 @@ def jogar_novamente_screen(screen,condicao,WIDTH, HEIGHT):
 
             #primeira tela final
             screen.fill((0,0,0))
-            screen.blit(Derrota_small,(0,0))
+            screen.blit(Vitoria_small,(0,0))
             pygame.display.update()
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
