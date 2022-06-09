@@ -5,6 +5,8 @@
         Thiago Naves
 
 Video:
+https://youtu.be/exrV8qnfNrc
+
 
 Especificações: 
 Jogo: Para iniciar o é necessário executar o arquivo "Jogo_final.py" dando run nele vai ser possível jogar executar o jogo pokecrias
